@@ -1,37 +1,33 @@
 import { Request, Response } from "express";
 import { prisma } from "../server";
-import { PrismaClient } from "@prisma/client";
-
-interface charCreateArgs {
-  name: string;
-  age: number;
-  race: string;
-  class: string;
-}
 
 const createCharacter = async (req: Request, res: Response) => {
+  console.log("up in there", req.body);
+
   try {
     if (
-      !!req?.body?.name ||
-      !!req?.body?.age ||
-      !!req?.body?.race ||
-      !!req?.body?.class
+      req.body.args.name &&
+      req.body.args.age &&
+      req.body.args.race &&
+      req.body.args.charClass
     ) {
-      // const { name, age, race, class } = req.body;
-      const { name, age, race, class: charClass } = req.body;
+      const { name, age, race, charClass } = req.body.args;
       const newCharacter = await prisma.character.create({
         data: {
           name,
           age,
           race,
-          class: charClass,
+          charClass,
         },
       });
+
+      console.log("CHARACTER????", newCharacter);
       res.status(200).json(newCharacter);
     } else {
       throw new Error("YA DONE FLUBBED SON!");
     }
   } catch (e) {
+    console.log("error?", e);
     res.status(500).json({ error: e });
   }
 };
