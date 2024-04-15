@@ -11,13 +11,13 @@ datasource db {
 }
 
 model Character {
-  id        String @id @default(cuid())
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String
   age       Int
   race      Race
-  class     Class
+  charClass Class
 }
 
 enum Race {
