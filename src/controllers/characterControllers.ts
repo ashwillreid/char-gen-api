@@ -3,8 +3,8 @@ import { prisma } from "../server";
 
 const createCharacter = async (req: Request, res: Response) => {
   try {
-    const { name, age, race, class } = req.body;
-    const newBlogPost = await prisma.character.create({
+    const { name, age, race, class }  = req.body;
+    const newCharacter = await prisma.character.create({
       data: {
         name,
         age,
@@ -12,7 +12,7 @@ const createCharacter = async (req: Request, res: Response) => {
 				class
       },
     });
-    res.status(200).json(newBlogPost);
+    res.status(200).json(newCharacter);
   } catch (e) {
     res.status(500).json({ error: e });
   }
