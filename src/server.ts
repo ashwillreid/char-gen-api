@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import CharacterRouter from "./routes/characterRouter";
+import CharactersRouter from "./routes/charactersRouter";
 
 export const prisma = new PrismaClient();
 
@@ -13,6 +14,7 @@ async function main() {
 
   // Register API routes
   app.use("/v1/character", CharacterRouter);
+  app.use("/v1/characters", CharactersRouter);
 
   // Catch unregistered routes
   app.all("*", (req: Request, res: Response) => {
