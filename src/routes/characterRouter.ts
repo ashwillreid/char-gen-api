@@ -3,7 +3,7 @@ import CharacterController from "../controllers/characterControllers";
 
 const router = express.Router();
 
+router.get("/:id", CharacterController.getCharacterById);
 router.post("/create", CharacterController.createCharacter);
-router.get("/get/:id", CharacterController.getCharacterById);
 
 export default router;
