@@ -52,7 +52,21 @@ const getCharacterById = async (req: Request, res: Response) => {
     res.status(500).json({ error: e });
   }
 };
+
+const getCharacters = async (req: Request, res: Response) => {
+  try {
+    const characters = await prisma.character.findMany();
+
+    console.log(characters);
+    res.status(200).json(characters);
+  } catch (e) {
+    console.log("error?", e);
+    res.status(500).json({ error: e });
+  }
+};
+
 export default {
   createCharacter,
   getCharacterById,
+  getCharacters,
 };
