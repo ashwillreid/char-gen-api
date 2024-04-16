@@ -2,13 +2,21 @@ import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import CharacterRouter from "./routes/characterRouter";
 import CharactersRouter from "./routes/charactersRouter";
+import cors from "cors";
 
 export const prisma = new PrismaClient();
 
 const app = express();
 const port = 8080;
 
+const allowedOrigins = ["http://localhost:5001"];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
 async function main() {
+  app.use(cors(options));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
