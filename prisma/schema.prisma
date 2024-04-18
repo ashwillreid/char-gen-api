@@ -18,6 +18,7 @@ model Character {
   age       Int
   race      Race
   charClass Class
+	hitDice		Dice
 }
 
 enum Race {
@@ -28,4 +29,24 @@ enum Race {
 enum Class {
   BARBARIAN
   ROUGE
+  SORCERER
+  WIZARD
+  ARTIFICER
+  BARD
+  CLERIC
+  DRUID
+  MONK
+  WARLOCK
+  FIGHTER
+  PALADIN
+  RANGER
+}
+
+enum Dice {
+  D4
+	D6
+	D8
+	D10
+	D12
+	D20
 }
