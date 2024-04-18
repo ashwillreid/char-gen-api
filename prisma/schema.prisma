@@ -18,6 +18,7 @@ model Character {
   age       Int
   race      Race
   charClass Class
+	hitDice		Dice
 }
 
 enum Race {
