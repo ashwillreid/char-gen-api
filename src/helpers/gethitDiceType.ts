@@ -1,4 +1,4 @@
-import { Character, Class, Dice } from "@prisma/client";
+import { Class, Dice } from "@prisma/client";
 
 export const getHitDiceType = (characterClass: Class) => {
   switch (characterClass) {
