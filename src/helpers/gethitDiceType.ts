@@ -1,11 +1,24 @@
-import { Character, Class } from "@prisma/client";
+import { Character, Class, Dice } from "@prisma/client";
 
 export const getHitDiceType = (character: Character) => {
   switch (character.charClass) {
     case Class.BARBARIAN:
-      return "d12";
+      return Dice.D12;
+    case Class.FIGHTER:
+    case Class.PALADIN:
+    case Class.RANGER:
+      return Dice.D10;
+    case Class.ARTIFICER:
+    case Class.BARD:
+    case Class.CLERIC:
+    case Class.DRUID:
+    case Class.MONK:
     case Class.ROUGE:
-      return "d8";
+    case Class.WARLOCK:
+      return Dice.D8;
+    case Class.SORCERER:
+    case Class.WIZARD:
+      return Dice.D6;
     default:
     //TODO: add error handling
   }
