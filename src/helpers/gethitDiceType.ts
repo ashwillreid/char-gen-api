@@ -1,7 +1,7 @@
 import { Character, Class, Dice } from "@prisma/client";
 
-export const getHitDiceType = (character: Character) => {
-  switch (character.charClass) {
+export const getHitDiceType = (characterClass: Class) => {
+  switch (characterClass) {
     case Class.BARBARIAN:
       return Dice.D12;
     case Class.FIGHTER:
